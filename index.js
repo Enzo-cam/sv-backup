@@ -32,7 +32,7 @@ app.post('/backup', (req, res) => {
     if (error) {
       
       console.error(`Error al realizar el backup: ${error.message}`);
-      return res.status(500).json({ message: `error backup ENVS ${JSON.stringify(envData)}` });
+      return res.status(500).json({ message: `Error al hacer el backup. Revise la consola del hosting` });
     }
 
     cloudinary.uploader.upload(backupFile, {
