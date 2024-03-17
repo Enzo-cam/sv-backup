@@ -17,15 +17,6 @@ app.post('/backup', (req, res) => {
   const backupFile = `backup-${formattedDate}.gz`;
 
   const mongodumpCommand = `mongodump --uri="${process.env.MONGO_URI}" --gzip --archive=${backupFile}`;
-
-
-  const envData = {
-    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
-    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
-    CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
-    MONGO_URI: process.env.MONGO_URI,
-  };
-
   
 
   exec(mongodumpCommand, (error, stdout, stderr) => {
